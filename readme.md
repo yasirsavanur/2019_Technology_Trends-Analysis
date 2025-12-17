@@ -73,7 +73,7 @@ This repo follows a full mini data‑science / BI pipeline:
    Notebook: [`5. Data_Visualization.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/5.%20Data_Visualization.ipynb) 
    - Builds charts for technology usage, trends, and demographics  
    - Output is summarised into a BI report / dashboard:
-     - [`Technology Trends & Analysis Presentation.pptx`](https://github.com/yasirsavanur/2019_Technology_Trends Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pptx)
+     - [`Technology Trends & Analysis Presentation.pptx`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pptx)
      - [`Technology Trends & Analysis Presentation.pdf`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pdf)
 
 ---
