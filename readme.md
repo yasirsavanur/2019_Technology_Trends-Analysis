@@ -49,32 +49,32 @@ This repo follows a full mini data‑science / BI pipeline:
    - Saves results into a spreadsheet
 
 2. **Collecting extra data through web scraping**  
-   Notebook: [`2a. Web_Scraping.ipynb`](2a.%20Web_Scraping.ipynb)  
+   Notebook: [`2a. Web_Scraping.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/2a.%20Web_Scraping.ipynb)  
    - Scrapes a public webpage listing popular languages  
    - Stores results in a CSV for comparison
 
 3. **Survey dataset exploration**  
-   Notebook: [`2b. Explore_Dataset.ipynb`](2b.%20Explore_Dataset.ipynb)  
+   Notebook: [`2b. Explore_Dataset.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/2b.%20Explore_Dataset.ipynb)
    - Loads the survey data 
    - Checks shape, data types, missing values, duplicates
 
 4. **Data wrangling**  
-   Notebook: [`3. Data_Wrangling.ipynb`](3.%20Data_Wrangling.ipynb)  
+   Notebook: [`3. Data_Wrangling.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/3.%20Data_Wrangling.ipynb) 
    - Removes duplicates and irrelevant columns  
    - Handles missing data  
    - Normalises multi‑select columns (e.g., multiple languages per respondent)
 
 5. **Exploratory data analysis**  
-   Notebook: [`4. Exploratory_Data_Analysis.ipynb`](4.%20Exploratory_Data_Analysis.ipynb)  
+   Notebook: [`4. Exploratory_Data_Analysis.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/4.%20Exploratory_Data_Analysis.ipynb)
    - Looks for distributions and relationships  
    - Aggregates counts for “worked with” vs “desired next year”
 
 6. **Data visualisation + BI reporting**  
-   Notebook: [`5. Data_Visualization.ipynb`](5.%20Data_Visualization.ipynb)  
+   Notebook: [`5. Data_Visualization.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/5.%20Data_Visualization.ipynb) 
    - Builds charts for technology usage, trends, and demographics  
    - Output is summarised into a BI report / dashboard:
-     - [`Technology Trends & Analysis Presentation.pptx`](Technology%20Trends%20%26%20Analysis%20Presentation.pptx)
-     - [`Technology Trends & Analysis Presentation.pdf`](Technology%20Trends%20%26%20Analysis%20Presentation.pdf)
+     - [`Technology Trends & Analysis Presentation.pptx`](https://github.com/yasirsavanur/2019_Technology_Trends Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pptx)
+     - [`Technology Trends & Analysis Presentation.pdf`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pdf)
 
 ---
 
