@@ -55,7 +55,7 @@ This repo follows a full mini data‑science / BI pipeline:
 
 3. **Survey dataset exploration**  
    Notebook: [`2b. Explore_Dataset.ipynb`](2b.%20Explore_Dataset.ipynb)  
-   - Loads the survey data  
+   - Loads the survey data 
    - Checks shape, data types, missing values, duplicates
 
 4. **Data wrangling**  
