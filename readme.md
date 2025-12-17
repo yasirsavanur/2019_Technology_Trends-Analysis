@@ -43,7 +43,7 @@ The end result is a simple BI‑style report and dashboard (see the slides / PDF
 This repo follows a full mini data‑science / BI pipeline:
 
 1. **Collecting job data through APIs**  
-   Notebook: [`1. Collecting_job_data_using_APIs.ipynb`]([1.%20Collecting_job_data_using_APIs.ipynb](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/1.%20Collecting_job_data_using_APIs.ipynb)
+   Notebook: [`1. Collecting_job_data_using_APIs.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/1.%20Collecting_job_data_using_APIs.ipynb)
    - Pulls job listings from the GitHub Jobs API  
    - Counts demand for specific technologies  
    - Saves results into a spreadsheet
