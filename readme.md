@@ -1,239 +1,246 @@
-# Stack Overflow Developer Survey 2019 – Technology Trends & BI Reporting
+# 2019 Technology Trends & Analysis
 
-This project looks at the **2019 Stack Overflow Developer Survey** to understand what technologies developers were using in 2019 and what they wanted to learn next. I also bring in job‑market signals (GitHub Jobs API) and a small web‑scraped dataset to compare survey trends with real hiring demand.
+An end-to-end data analysis project using the **2019 Stack Overflow Developer Survey** to compare the technologies developers were using at the time with the technologies they wanted to learn next.
 
-The end result is a simple BI‑style report and dashboard (see the slides / PDF in this repo).
+I also added two external signals — a historical **GitHub Jobs API** snapshot and a small **web-scraped programming-language dataset** — to make the analysis more useful than a single-source survey report.
 
----
+![2019 Technology Trends and Analysis](images/technology-trends-thumbnail.svg)
 
-## Objectives
+## What this project is about
 
-- Collect job‑market data using APIs and basic web scraping.
-- Clean and wrangle the survey dataset into a usable format.
-- Explore the data with EDA to find patterns and gaps.
-- Build visualisations that answer “what’s popular now vs next.”
-- Summarise findings in a BI report/dashboard.
+Technology changes quickly, so current popularity on its own does not tell the full story. A language, framework or platform can be widely used today while another tool is gaining interest faster for the future.
 
----
+This project looks at both sides:
 
-## Data Sources
+- what developers were already using in 2019
+- what they wanted to use or learn next
+- how those patterns differed across languages, databases, platforms and web frameworks
+- whether survey trends broadly matched job-market and web-scraped signals
+- what the respondent demographics looked like
 
-1. **Stack Overflow Developer Survey 2019 (subset)**  
-   A cleaned subset of the public 2019 survey. It includes:
-   - Technologies worked with and desired next year  
-     (languages, databases, platforms, web frameworks)
-   - Demographics  
-     (age, gender, education, country, etc.)
-
-   Files used here:
-   - [`Dataset/m5_survey_data_technologies_normalised.csv`](Dataset/m5_survey_data_technologies_normalised.csv)
-   - [`Dataset/m5_survey_data_demographics.csv`](Dataset/m5_survey_data_demographics.csv)
-   - [`Dataset/m4_survey_data.sqlite.zip`](Dataset/m4_survey_data.sqlite.zip)
-
-2. **GitHub Jobs API (job demand snapshot)**  
-   Used to count how many jobs mention certain technologies.
-
-3. **Web‑scraped list of popular programming languages**  
-   A small scrape to practice extraction + saving results to CSV.
+The final output is a **BI-style technology trends report** supported by the full analysis workflow in Python notebooks.
 
 ---
 
-## Project Workflow
+## End-to-end workflow
 
-This repo follows a full mini data‑science / BI pipeline:
-
-1. **Collecting job data through APIs**  
-   Notebook: [`1. Collecting_job_data_using_APIs.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/1.%20Collecting_job_data_using_APIs.ipynb)
-   - Pulls job listings from the GitHub Jobs API  
-   - Counts demand for specific technologies  
-   - Saves results into a spreadsheet
-
-2. **Collecting extra data through web scraping**  
-   Notebook: [`2a. Web_Scraping.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/2a.%20Web_Scraping.ipynb)  
-   - Scrapes a public webpage listing popular languages  
-   - Stores results in a CSV for comparison
-
-3. **Survey dataset exploration**  
-   Notebook: [`2b. Explore_Dataset.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/2b.%20Explore_Dataset.ipynb)
-   - Loads the survey data 
-   - Checks shape, data types, missing values, duplicates
-
-4. **Data wrangling**  
-   Notebook: [`3. Data_Wrangling.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/3.%20Data_Wrangling.ipynb) 
-   - Removes duplicates and irrelevant columns  
-   - Handles missing data  
-   - Normalises multi‑select columns (e.g., multiple languages per respondent)
-
-5. **Exploratory data analysis**  
-   Notebook: [`4. Exploratory_Data_Analysis.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/4.%20Exploratory_Data_Analysis.ipynb)
-   - Looks for distributions and relationships  
-   - Aggregates counts for “worked with” vs “desired next year”
-
-6. **Data visualisation + BI reporting**  
-   Notebook: [`5. Data_Visualization.ipynb`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/notebooks/5.%20Data_Visualization.ipynb) 
-   - Builds charts for technology usage, trends, and demographics  
-   - Output is summarised into a BI report / dashboard:
-     - [`Technology Trends & Analysis Presentation.pptx`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pptx)
-     - [`Technology Trends & Analysis Presentation.pdf`](https://github.com/yasirsavanur/2019_Technology_Trends-Analysis/blob/main/docs/Technology%20Trends%20%26%20Analysis%20Presentation.pdf)
+| Stage | What I did | Main tools |
+|---|---|---|
+| 1. Data collection | Pulled job-market data through an API and collected a small comparison dataset through web scraping | Python, Requests, BeautifulSoup |
+| 2. Data understanding | Reviewed dataset shape, data types, duplicates and missing values | Pandas, Jupyter |
+| 3. Data wrangling | Removed duplicates, handled missing data and prepared multi-response technology fields for analysis | Pandas, NumPy |
+| 4. Exploratory analysis | Compared current technology usage, future interest and respondent demographics | Pandas, SQL/SQLite |
+| 5. Visualisation | Built charts to make the main trends easier to compare | Matplotlib, Seaborn |
+| 6. BI reporting | Turned the analysis into a concise presentation/report for a non-technical audience | Data storytelling, BI reporting |
 
 ---
 
-## Key Findings (from the survey subset)
+## Data sources
 
-### Current technology usage (2019)
+### 1. Stack Overflow Developer Survey 2019
 
-**Top languages developers worked with**
-1. JavaScript  
-2. HTML/CSS  
-3. SQL  
-4. Bash/Shell/PowerShell  
-5. Python  
-6. Java  
-7. C#  
-8. TypeScript  
-9. PHP  
-10. C++
+The core analysis uses a cleaned subset of the 2019 survey containing:
 
-**Top databases developers worked with**
-1. MySQL  
-2. Microsoft SQL Server  
-3. PostgreSQL  
-4. SQLite  
-5. MongoDB  
-6. Redis  
-7. Elasticsearch  
-8. Oracle  
-9. MariaDB  
-10. Firebase
+- technologies respondents had worked with
+- technologies respondents wanted to work with next
+- programming languages
+- databases
+- platforms
+- web frameworks
+- respondent demographics such as age, gender, education and country
 
-**Top platforms developers worked with**
-1. Linux  
-2. Windows  
-3. Docker  
-4. AWS  
-5. Slack  
-6. MacOS  
-7. Android  
-8. Microsoft Azure  
-9. Raspberry Pi  
-10. WordPress
+Main files:
 
-**Top web frameworks developers worked with**
-1. jQuery  
-2. Angular / Angular.js  
-3. React.js  
-4. ASP.NET  
-5. Express  
-6. Spring  
-7. Vue.js  
-8. Flask  
-9. Django  
-10. Laravel
+- [`Dataset/m5_survey_data_technologies_normalised.csv`](Dataset/m5_survey_data_technologies_normalised.csv)
+- [`Dataset/m5_survey_data_demographics.csv`](Dataset/m5_survey_data_demographics.csv)
+- [`Dataset/m4_survey_data.sqlite.zip`](Dataset/m4_survey_data.sqlite.zip)
+
+### 2. GitHub Jobs API snapshot
+
+A historical job-market snapshot was used to count technology mentions in job listings and provide a second signal alongside survey popularity.
+
+### 3. Web-scraped language data
+
+A small public webpage was scraped to collect a comparison list of popular programming languages. This part of the project demonstrates a basic scrape → clean → save workflow.
 
 ---
 
-### Future technology trends (what people wanted next)
+## Project notebooks
 
-**Top languages developers wanted to learn next**
-1. JavaScript  
-2. HTML/CSS  
-3. Python  
-4. SQL  
-5. TypeScript  
-6. C#  
-7. Bash/Shell/PowerShell  
-8. Java  
-9. Go  
-10. Kotlin  
+The notebooks are arranged in the same order as the analysis pipeline.
 
-Big takeaway: Python, TypeScript, Go, and Kotlin were climbing fast even if they weren’t top‑3 in current use.
+### 1. Collect job data using an API
 
-**Top databases developers wanted next**
-1. PostgreSQL  
-2. MongoDB  
-3. Redis  
-4. MySQL  
-5. Elasticsearch  
-6. Microsoft SQL Server  
-7. SQLite  
-8. Firebase  
-9. MariaDB  
-10. DynamoDB  
+[`notebooks/1. Collecting_job_data_using_APIs.ipynb`](notebooks/1.%20Collecting_job_data_using_APIs.ipynb)
 
-Big takeaway: PostgreSQL and modern NoSQL/fast‑cache tools were clearly gaining momentum.
+- requests job-listing data
+- counts technology mentions
+- saves the results for later comparison
 
-**Top platforms developers wanted next**
-1. Linux  
-2. Docker  
-3. AWS  
-4. Windows  
-5. Android  
-6. Kubernetes  
-7. MacOS  
-8. Raspberry Pi  
-9. Google Cloud Platform  
-10. Slack  
+### 2. Web scraping
 
-Big takeaway: Docker + Kubernetes interest shows how strongly cloud‑native dev was taking over.
+[`notebooks/2a. Web_Scraping.ipynb`](notebooks/2a.%20Web_Scraping.ipynb)
 
-**Top web frameworks developers wanted next**
-1. React.js  
-2. Vue.js  
-3. Angular / Angular.js  
-4. ASP.NET  
-5. jQuery  
-6. Express  
-7. Spring  
-8. Django  
-9. Flask  
-10. Ruby on Rails  
+- extracts programming-language data from a webpage
+- structures the results
+- exports the cleaned output
 
-Big takeaway: React and Vue were the main “next‑step” frameworks people were aiming for.
+### 3. Explore the survey data
+
+[`notebooks/2b. Explore_Dataset.ipynb`](notebooks/2b.%20Explore_Dataset.ipynb)
+
+- checks the structure of the dataset
+- reviews missing values and duplicates
+- inspects the available fields before analysis
+
+### 4. Data wrangling
+
+[`notebooks/3. Data_Wrangling.ipynb`](notebooks/3.%20Data_Wrangling.ipynb)
+
+- removes duplicates
+- handles missing values
+- prepares the technology fields for analysis
+
+### 5. Exploratory data analysis
+
+[`notebooks/4. Exploratory_Data_Analysis.ipynb`](notebooks/4.%20Exploratory_Data_Analysis.ipynb)
+
+- compares technologies developers had worked with
+- compares technologies developers wanted next
+- analyses demographic patterns
+
+### 6. Data visualisation and reporting
+
+[`notebooks/5. Data_Visualization.ipynb`](notebooks/5.%20Data_Visualization.ipynb)
+
+- creates the charts used in the final analysis
+- turns the findings into a clear story for a business audience
+
+Final deliverables:
+
+- [`docs/Technology Trends & Analysis Presentation.pptx`](docs/Technology%20Trends%20%26%20Analysis%20Presentation.pptx)
+- [`docs/Technology Trends & Analysis Presentation.pdf`](docs/Technology%20Trends%20%26%20Analysis%20Presentation.pdf)
 
 ---
 
-### Demographics snapshot
+## Key findings
 
-- **Gender split is heavily uneven** in this subset:  
-  - “Man” respondents dominate by a lot, with “Woman” and non‑binary groups much smaller.  
-- **Average respondent age is about 31**, and the median is 29.  
-- **Top countries represented**: United States, India, United Kingdom, Germany, Canada.  
-- **Education level**: most respondents report a Bachelor’s degree, followed by Master’s degrees.
+### Programming languages
+
+JavaScript, HTML/CSS and SQL were among the most widely used technologies in the survey subset.
+
+The future-interest view was more interesting. **Python, TypeScript, Go and Kotlin** showed strong interest relative to their current-use position, suggesting developers were actively looking beyond the most established languages.
+
+### Databases
+
+MySQL and Microsoft SQL Server were highly represented in current usage, while **PostgreSQL, MongoDB and Redis** ranked strongly in the technologies respondents wanted to use next.
+
+That points to growing interest in modern relational, document and in-memory data tools rather than simply repeating the existing market order.
+
+### Platforms
+
+Linux and Windows were widely used, but **Docker, AWS and Kubernetes** stood out in future interest.
+
+The gap between current use and wanted-next use gives a clearer picture of where cloud-native development was heading than a simple popularity ranking would.
+
+### Web frameworks
+
+jQuery and Angular had strong current usage, while **React and Vue** performed particularly well in the future-interest view.
+
+This is a good example of why the project compares current adoption with future intent instead of treating them as the same thing.
+
+### Demographics
+
+The survey subset was heavily male, with an average respondent age of roughly 31 and a median of 29. The United States, India, the United Kingdom, Germany and Canada were among the most represented countries.
 
 ---
 
-## How to Run
+## Skills demonstrated
 
-This project is notebook‑based. Open the `.ipynb` files in Jupyter Lab / VS Code.  
-Main libraries used: `pandas`, `numpy`, `matplotlib`, `seaborn`, `requests`, `beautifulsoup4`.
+This project covers more than chart building. It shows the full path from raw data to a stakeholder-facing output:
 
-Example install:
+- Python data analysis
+- Pandas and NumPy
+- API data collection
+- web scraping with BeautifulSoup
+- SQLite / SQL
+- data cleaning and wrangling
+- exploratory data analysis
+- data visualisation
+- BI reporting
+- data storytelling
+- translating technical findings for a non-technical audience
+
+---
+
+## Repository structure
+
+```text
+2019_Technology_Trends-Analysis/
+│
+├── Dataset/
+│   ├── survey technology data
+│   ├── demographic data
+│   └── SQLite dataset
+│
+├── notebooks/
+│   ├── 1. Collecting_job_data_using_APIs.ipynb
+│   ├── 2a. Web_Scraping.ipynb
+│   ├── 2b. Explore_Dataset.ipynb
+│   ├── 3. Data_Wrangling.ipynb
+│   ├── 4. Exploratory_Data_Analysis.ipynb
+│   └── 5. Data_Visualization.ipynb
+│
+├── docs/
+│   ├── Technology Trends & Analysis Presentation.pptx
+│   └── Technology Trends & Analysis Presentation.pdf
+│
+├── images/
+│   └── technology-trends-thumbnail.svg
+│
+└── readme.md
+```
+
+---
+
+## How to run the analysis
+
+The project is notebook-based, so the easiest option is JupyterLab or VS Code.
+
+Install the main Python libraries:
 
 ```bash
 pip install pandas numpy matplotlib seaborn requests beautifulsoup4
 ```
 
----
+Then open the notebooks in numerical order, starting with the collection steps and ending with the visualisation notebook.
 
-## Deliverables
-
-- Cleaned and normalised survey datasets (CSV + SQLite)
-- EDA + visualisation notebooks
-- BI dashboard summary in slides/PDF:
-  - [`Technology Trends & Analysis Presentation.pdf`](Technology%20Trends%20%26%20Analysis%20Presentation.pdf)
+Some external data sources used in the original project were point-in-time sources, so the API or scraped page may not behave exactly as it did when the analysis was first created. The survey datasets stored in the repository can still be used to reproduce the main analysis.
 
 ---
 
-## Possible Extensions
+## What I would improve next
 
-- Add 2020–2024 survey years to show trend direction over time.
-- Compare survey popularity with job‑market popularity more formally.
-- Turn the dashboard into a live Power BI / Tableau / Dash app.
-- Segment trends by role (student vs professional, backend vs frontend, etc.).
+If I extended this project, I would:
+
+- add later Stack Overflow survey years to measure how accurate the 2019 future-interest signals were
+- automate the survey cleaning process into a reusable Python pipeline
+- compare survey popularity and job demand using a more formal scoring method
+- segment the analysis by job role, experience level or country
+- publish the final report as a live Power BI, Tableau or web dashboard
+
+---
+
+## Why this project matters in my portfolio
+
+The useful part of this project is not the 2019 ranking itself. It is the workflow.
+
+It shows that I can take data from different sources, clean and structure it, investigate the important questions, produce clear visualisations and then turn the result into something a stakeholder can actually read and use.
 
 ---
 
 ## Author
 
-**Yasir Savanur**  
-LinkedIn: https://www.linkedin.com/in/yasir-savanur/
+**Yasir Savanur**
+
+[LinkedIn](https://www.linkedin.com/in/yasir-savanur/) | [Portfolio](https://yasirsavanur.github.io/)
